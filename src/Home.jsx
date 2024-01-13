@@ -20,8 +20,6 @@ const Home = () => {
     }else{
       setTheme('theme3')
     }
-
-  
   }
 
   const btnValues = [

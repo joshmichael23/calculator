@@ -7,6 +7,7 @@ const Button = ({ className, value, realValue, setRealValue}) => {
 
     
     function set(e){
+        var value;
         if(e.target.value=="DEL"){
             setRealValue(realValue.toString().slice(0, -1));
         }
@@ -14,7 +15,14 @@ const Button = ({ className, value, realValue, setRealValue}) => {
             setRealValue('');
         }
         else if(e.target.value=="="){
-            setRealValue(eval(realValue));
+            try{
+                value = eval(realValue);
+                setRealValue(value);
+            } catch (e) {
+                if (e instanceof SyntaxError) {
+                    setRealValue('Error');
+                }
+            }
         }
         else if(e.target.value=="x"){
             setRealValue(realValue+'*');
